@@ -102,7 +102,7 @@ const Finder = () => {
                     </tbody>
                 </Table>
 
-                <Modal show={show} size="lg" onHide={addMovie}>
+                <Modal show={show} size="lg" onHide={handleClose}>
                     <Modal.Header closeButton>
                         <Modal.Title>{selectedMovie.Title}</Modal.Title>
                     </Modal.Header>
