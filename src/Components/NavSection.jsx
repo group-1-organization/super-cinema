@@ -16,7 +16,7 @@ const NavSection = () => {
                 <Nav.Link href="finder">Movie Finder</Nav.Link>
                 <Nav.Link href="mymovies">My Movies</Nav.Link>
                 <Nav.Link href="about">About us</Nav.Link>
-                <Nav.Link href="contact">Contact us</Nav.Link>
+                <Nav.Link href="contactus">Contact us</Nav.Link>
             </Nav>
             <Form inline>
                 <FormControl type="text" placeholder="Search" className="mr-sm-2" />
