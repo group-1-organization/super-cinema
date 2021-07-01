@@ -5,6 +5,7 @@ import NavSection from './Components/NavSection';
 import Container from 'react-bootstrap/Container';
 import Home from './Components/Home/Home'
 import Finder from './Components/FinderComponents/Finder'
+import ContactUs from './Components/ContactUs/contactUs';
 
 function App() {
   return (
@@ -19,6 +20,11 @@ function App() {
         <Route path="/finder">
           <Container>
             <Finder />
+          </Container>
+        </Route>
+        <Route path="/contactus">
+          <Container>
+            <ContactUs />
           </Container>
         </Route>
       </Switch>

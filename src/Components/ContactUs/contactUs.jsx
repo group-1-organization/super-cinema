@@ -52,7 +52,7 @@ const ContactUs = () => {
                     <Modal.Header>
                         <Modal.Title>Submited</Modal.Title>
                     </Modal.Header>
-                    <Modal.Body>Thank you for the feedback {fName} {lName}, conformation has been sent to {email},</Modal.Body>
+                    <Modal.Body>Thank you for Your feedback {fName} {lName}, confirmation email has been sent to {email},</Modal.Body>
                     <Modal.Footer>
                         <Button variant="secondary" onClick={() => setShow(false)}>Close</Button>
                     </Modal.Footer>
