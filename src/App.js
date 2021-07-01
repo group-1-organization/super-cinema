@@ -4,7 +4,7 @@ import './App.css';
 import NavSection from './Components/NavSection';
 import Container from 'react-bootstrap/Container';
 import Home from './Components/Home/Home'
-import Finder from './Components/FinderComponents/Finder'
+import Finder from './Components/Finder/Finder'
 
 function App() {
   return (
