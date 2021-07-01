@@ -29,14 +29,28 @@ const Finder = () => {
 
     const getMovieById = (id) => {
         axios.get(`https://www.omdbapi.com/?apikey=ad5280a&i=${id}`).then((response) => {
-            setSelectedMovie(response.data)
-            console.log(selectedMovie);
+            setSelectedMovie(response.data);
         })
     }
 
     const addMovie = () => {
-        console.log(selectedMovie);
-        axios.post(`http://localhost:5000/cinema/movies`, { selectedMovie })
+        let movie = {
+            Title: selectedMovie.Title,
+            Year: selectedMovie.Year,
+            Runtime: selectedMovie.Runtime,
+            Genre: selectedMovie.Genre,
+            Plot: selectedMovie.Plot,
+            Poster: selectedMovie.Poster
+        }
+        console.log(movie);
+        axios.post(`http://localhost:5000/cinema/movies`, movie,
+            {
+                headers: {
+                    "Access-Control-Allow-Origin": "*"
+                }
+            }).then((response) => {
+                console.log(response);
+            })
 
         handleClose();
     }
