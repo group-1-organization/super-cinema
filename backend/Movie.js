@@ -15,7 +15,7 @@ const movieSchema = new Schema({
         required: true
     },
     Runtime: {
-        type: Number,
+        type: String,
         minlength: 2,
         required: true
     },
