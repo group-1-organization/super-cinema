@@ -1,6 +1,5 @@
-import useState from 'react';
-import Container from 'react-bootstrap/Container'
-import Button from 'react-bootstrap';
+import { useState } from 'react';
+import { Container, Button } from 'react-bootstrap'
 import Form from 'react-bootstrap/Form'
 import Modal from 'react-bootstrap/Modal'
 const ContactUs = () => {
