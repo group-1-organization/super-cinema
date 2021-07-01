@@ -34,6 +34,13 @@ const Finder = () => {
         })
     }
 
+    const addMovie = () => {
+        console.log(selectedMovie);
+        axios.post(`http://localhost:5000/cinema/movies`, { selectedMovie })
+
+        handleClose();
+    }
+
     useEffect(() => {
         axios.get(`https://www.omdbapi.com/?apikey=ad5280a&s=${movieName}`).then((response) => {
             setLoaded(true);
@@ -81,7 +88,7 @@ const Finder = () => {
                     </tbody>
                 </Table>
 
-                <Modal show={show} size="lg" onHide={handleClose}>
+                <Modal show={show} size="lg" onHide={addMovie}>
                     <Modal.Header closeButton>
                         <Modal.Title>{selectedMovie.Title}</Modal.Title>
                     </Modal.Header>
@@ -98,8 +105,8 @@ const Finder = () => {
                         <Button variant="secondary" onClick={handleClose}>
                             Close
                         </Button>
-                        <Button variant="primary" onClick={handleClose}>
-                            Save Changes
+                        <Button variant="success" onClick={addMovie}>
+                            Add to List
                         </Button>
                     </Modal.Footer>
                 </Modal>
