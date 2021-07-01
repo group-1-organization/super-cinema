@@ -46,7 +46,7 @@ router.get('/movies/:id', async (req, res) => {
     }
 })
 
-//update doesn't work yet
+//update title
 router.patch('/movies/:id', async (req, res) => {
     console.log(req.body);
     try {
