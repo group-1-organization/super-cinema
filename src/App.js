@@ -3,9 +3,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import NavSection from './Components/NavSection';
 import Container from 'react-bootstrap/Container';
+import About from './Components/About';
 import Home from './Components/Home/Home'
 import ContactUs from './Components/ContactUs/contactUs';
-import Finder from './Components/Finder/Finder'
+import Finder from './Components/Finder/Finder';
 
 function App() {
   return (
@@ -20,6 +21,11 @@ function App() {
         <Route path="/finder">
           <Container>
             <Finder />
+          </Container>
+        </Route>
+        <Route path="/about">
+          <Container>
+            <About />
           </Container>
         </Route>
         <Route path="/contactus">
