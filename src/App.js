@@ -6,6 +6,7 @@ import Container from 'react-bootstrap/Container';
 import Home from './Components/Home/Home'
 import ContactUs from './Components/ContactUs/contactUs';
 import Finder from './Components/Finder/Finder'
+import List from './Components/List/List'
 
 function App() {
   return (
@@ -20,6 +21,11 @@ function App() {
         <Route path="/finder">
           <Container>
             <Finder />
+          </Container>
+        </Route>
+        <Route path="/mymovies">
+          <Container>
+            <List />
           </Container>
         </Route>
         <Route path="/contactus">
