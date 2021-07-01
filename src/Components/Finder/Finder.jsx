@@ -2,6 +2,10 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import Form from 'react-bootstrap/Form'
 import Table from 'react-bootstrap/Table'
+import Modal from 'react-bootstrap/Modal'
+import Button from 'react-bootstrap/Button'
+import ListGroup from 'react-bootstrap/ListGroup'
+
 
 const Finder = () => {
 
@@ -9,6 +13,26 @@ const Finder = () => {
     const [error, setError] = useState(null);
     const [movieName, setMovieName] = useState('');
     const [movies, setMovies] = useState([]);
+
+    const [selectedMovie, setSelectedMovie] = useState({});
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => {
+        setShow(false);
+        setSelectedMovie([]);
+    }
+    const handleShow = (event) => {
+        let id = event.target.getAttribute("imdbid");
+        getMovieById(id);
+        setShow(true);
+    }
+
+    const getMovieById = (id) => {
+        axios.get(`https://www.omdbapi.com/?apikey=ad5280a&i=${id}`).then((response) => {
+            setSelectedMovie(response.data)
+            console.log(selectedMovie);
+        })
+    }
 
     useEffect(() => {
         axios.get(`https://www.omdbapi.com/?apikey=ad5280a&s=${movieName}`).then((response) => {
@@ -39,20 +63,47 @@ const Finder = () => {
                         <tr>
                             <th>Title</th>
                             <th>Year</th>
-                            <th></th>
+                            <th className="w-0"></th>
                         </tr>
                     </thead>
                     <tbody>
-                        {movies.map((movie) => (
-                            <tr>
+                        {movies.map((movie, i) => (
+                            <tr key={i}>
                                 <td>{movie.Title}</td>
                                 <td>{movie.Year}</td>
-                                <td>button</td>
+                                <td>
+                                    <Button variant="primary" onClick={handleShow} imdbid={movie.imdbID}>
+                                        Open
+                                    </Button>
+                                </td>
                             </tr>
                         ))}
                     </tbody>
                 </Table>
-            </div>
+
+                <Modal show={show} size="lg" onHide={handleClose}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>{selectedMovie.Title}</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <img src={selectedMovie.Poster} alt={selectedMovie.Title} />
+                        <ListGroup variant="flush">
+                            <ListGroup.Item>Year: <b>{selectedMovie.Year}</b></ListGroup.Item>
+                            <ListGroup.Item>Runtime: <b>{selectedMovie.Runtime}</b></ListGroup.Item>
+                            <ListGroup.Item>Genre: <b>{selectedMovie.Genre}</b></ListGroup.Item>
+                        </ListGroup>
+                        <p>{selectedMovie.Plot}</p>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="secondary" onClick={handleClose}>
+                            Close
+                        </Button>
+                        <Button variant="primary" onClick={handleClose}>
+                            Save Changes
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
+            </div >
         )
     }
 
